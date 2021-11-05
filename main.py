@@ -16,6 +16,9 @@ def debug():
     ], observers=observers, punishSlowBots=False)
     env.reset()
     env.reset(rotatePlayers=True)
+    env.reset(rotatePlayers=True)
+    env.reset(rotatePlayers=True)
+    env.reset(rotatePlayers=True)
 
 
 def benchmark():
@@ -23,7 +26,7 @@ def benchmark():
         # Change the bots here to change the participants
         CounterBot(),
         PercentBot(),
-        # TemplateBot(),
+        KaijiBot(),
     ]
     combinations = list(itertools.combinations(bots, 2))
     roundsPerPair = 1000
@@ -45,5 +48,5 @@ def benchmark():
     print(stats)
 
 
-# benchmark()
-debug()
+benchmark()
+#debug()
