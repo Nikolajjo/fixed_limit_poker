@@ -50,13 +50,13 @@ class KaijiBot(BotInterface):
                 return Action.FOLD
         else:
             handpercent, cards  = getHandPercent(observation.myHand, observation.boardCards)
-                if handpercent < .05:        
-                    return Action.RAISE
-                elif handpercent < 0.20 and last_action != Action.RAISE:
-                    return Action.RAISE
-                elif handpercent < .45 and last_action != Action.RAISE:
-                    return Action.CALL
-                elif handpercent < 0.60:
-                    return Action.CHECK
-                else:
-                    return Action.FOLD
+            if handpercent < .05:        
+                return Action.RAISE
+            elif handpercent < 0.20 and last_action != Action.RAISE:
+                return Action.RAISE
+            elif handpercent < .45 and last_action != Action.RAISE:
+                return Action.CALL
+            elif handpercent < 0.60:
+                return Action.CHECK
+            else:
+                return Action.FOLD
