@@ -37,7 +37,7 @@ class KaijiBot(BotInterface):
                 return Action.CALL
             elif handpercent < 0.80:
                 return Action.CHECK
-        else 
+        else: 
             handpercent = getHandPercent(observation.myHand, observation.boardCards)
             if handPercent < .20:        
                 return Action.RAISE
