@@ -25,6 +25,18 @@ class KaijiBot(BotInterface):
             If this function takes longer than 1 second, your bot will fold
         '''
 
+        handpercent = getHandPercent(observation.myHand)
+        round = observation.stage
+
         # Check if percent is high enough
-        action = Action.CHECK
+        if round == Stage.PREFLOP:
+            if handPercent < .20:        
+                return Action.RAISE
+            elif handPercent < .40:
+                return Action.CALL
+            elif handpercent < 0.80:
+                return Action.CHECK
+        #elif round != Stage.
+
+
         return action
