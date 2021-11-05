@@ -11,7 +11,7 @@ def debug():
     env = FixedLimitPoker([
         # Change the bots here to change the participants
         PercentBot(),
-        TemplateBot()
+        KaijiBot()
     ], observers=observers, punishSlowBots=False)
     env.reset()
     env.reset(rotatePlayers=True)
