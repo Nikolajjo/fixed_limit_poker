@@ -3,14 +3,15 @@ import random
 from typing import Sequence
 
 from bots.BotInterface import BotInterface
-from environment.Constants import Action
+from environment.Constants import Action, Stage
 from environment.Observation import Observation
+from utils.handValue import getHandPercent
 
 # your bot class, rename to match the file name
 class KaijiBot(BotInterface):
 
     # change the name of your bot here
-    def __init__(self, name="nc_template"):
+    def __init__(self, name="KaijiBot"):
         '''init function'''
         super().__init__(name=name)
 
@@ -26,10 +27,8 @@ class KaijiBot(BotInterface):
         '''
 
         
-        round = observation.stage
-
-        # Check if percent is high enough
-        if round == Stage.PREFLOP:
+        stage = observation.stage
+        if stage == Stage.PREFLOP:
             handpercent = getHandPercent(observation.myHand)
             if handPercent < .20:        
                 return Action.RAISE
@@ -37,7 +36,9 @@ class KaijiBot(BotInterface):
                 return Action.CALL
             elif handpercent < 0.80:
                 return Action.CHECK
-        else: 
+            else: 
+                return Action.FOLD
+        else:
             handpercent = getHandPercent(observation.myHand, observation.boardCards)
             if handPercent < .20:        
                 return Action.RAISE
@@ -45,5 +46,7 @@ class KaijiBot(BotInterface):
                 return Action.CALL
             elif handpercent < 0.80:
                 return Action.CHECK
+            else:
+                return Action.FOLD
 
         return action
