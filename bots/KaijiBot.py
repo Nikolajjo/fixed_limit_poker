@@ -7,7 +7,7 @@ from environment.Constants import Action
 from environment.Observation import Observation
 
 # your bot class, rename to match the file name
-class TemplateBot(BotInterface):
+class KaijiBot(BotInterface):
 
     # change the name of your bot here
     def __init__(self, name="nc_template"):
@@ -25,6 +25,6 @@ class TemplateBot(BotInterface):
             If this function takes longer than 1 second, your bot will fold
         '''
 
-        # do a random action
-        action = random.choice(action_space)
+        # Check if percent is high enough
+        action = Action.CHECK
         return action
