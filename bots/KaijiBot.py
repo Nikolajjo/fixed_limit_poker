@@ -29,20 +29,20 @@ class KaijiBot(BotInterface):
         
         stage = observation.stage
         if stage == Stage.PREFLOP:
-            handpercent = getHandPercent(observation.myHand)
-            if handPercent < .20:        
+            handpercent, _  = getHandPercent(observation.myHand)
+            if handpercent < .20:        
                 return Action.RAISE
-            elif handPercent < .40:
+            elif handpercent < .40:
                 return Action.CALL
             elif handpercent < 0.80:
                 return Action.CHECK
             else: 
                 return Action.FOLD
         else:
-            handpercent = getHandPercent(observation.myHand, observation.boardCards)
-            if handPercent < .20:        
+            handpercent, cards  = getHandPercent(observation.myHand, observation.boardCards)
+            if handpercent < .20:        
                 return Action.RAISE
-            elif handPercent < .40:
+            elif handpercent < .40:
                 return Action.CALL
             elif handpercent < 0.80:
                 return Action.CHECK
