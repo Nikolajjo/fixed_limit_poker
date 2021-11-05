@@ -31,6 +31,7 @@ class KaijiBot(BotInterface):
         stage = observation.stage
         opponent_actions_this_round = observation.get_opponent_history_current_stage()
         # Get the last action the opponent have done
+        last_action = None
         if len(opponent_actions_this_round) > 0:
             last_action = opponent_actions_this_round[-1] 
             if len(opponent_actions_this_round) > 1:
