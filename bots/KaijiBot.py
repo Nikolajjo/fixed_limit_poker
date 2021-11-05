@@ -33,8 +33,8 @@ class KaijiBot(BotInterface):
         # Get the last action the opponent have done
         if len(opponent_actions_this_round) > 0:
             last_action = opponent_actions_this_round[-1] 
-            if len(opponent_actions_this_round) == 2:
-               last_last_action = opponent_actions_this_round[0]
+            if len(opponent_actions_this_round) > 1:
+               last_last_action = opponent_actions_this_round[-2]
         else: 
             None
 
@@ -52,6 +52,8 @@ class KaijiBot(BotInterface):
             handpercent, cards  = getHandPercent(observation.myHand, observation.boardCards)
             if last_action == Action.CHECK and handpercent < .40:
                 return Action.RAISE
+            elif last_action == Action.RAISE and last_last_action = Action.RAISE:
+                return Action.FOLD
             else:
                 if handpercent < .05:        
                     return Action.RAISE
